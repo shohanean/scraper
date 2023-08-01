@@ -10,6 +10,17 @@
                 <p>{{ key+1 }}: {{ company.name }} - {{ company.price }} - {{ company.description }}</p>
             {% endfor %}
         </div>
+        <div class="col-12">
+            <form method="POST" action="{{ url('scraper_store') }}">
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Name</label>
+                    <input type="text" class="form-control" placeholder="Name">
+                </div>
+                <div class="form-group mt-4">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 {% endblock %}

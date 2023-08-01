@@ -13,3 +13,8 @@ scraper_create:
   path: /scraper/create
   controller: App\Controller\ScraperController::create
   methods: GET
+
+scraper_store:
+  path: /scraper/store
+  controller: App\Controller\ScraperController::store
+  methods: POST

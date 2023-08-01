@@ -1,0 +1,15 @@
+{% extends 'app.html.twig' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Company List</h1>
+            
+            {% for key, company in companies %}
+                <p>{{ key+1 }}: {{ company.name }} - {{ company.price }} - {{ company.description }}</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

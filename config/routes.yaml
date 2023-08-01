@@ -1,5 +1,15 @@
 controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
-    type: attribute
+  resource:
+    path: ../src/Controller/
+    namespace: App\Controller
+  type: attribute
+
+scraper_index:
+  path: /scraper
+  controller: App\Controller\ScraperController::index
+  methods: GET
+
+scraper_create:
+  path: /scraper/create
+  controller: App\Controller\ScraperController::create
+  methods: GET

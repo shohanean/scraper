@@ -38,6 +38,7 @@
                                     <th scope="col">Name</th>
                                     <th scope="col">Price</th>
                                     <th scope="col">Description</th>
+                                    <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,7 +48,14 @@
                                             <td scope="row">{{ key+1 }}</td>
                                             <td>{{ company.name }}</td>
                                             <td>{{ company.price }}</td>
-                                            <td>{{ company.description }}</td>
+                                            <td>{{ company.description }}</td>                                            
+                                            <td>
+                                                <form method="post" action="{{ path('scraper_destroy', {'id': company.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                                    <input type="hidden" name="_method" value="DELETE">
+                                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ company.id) }}">
+                                                    <button class="btn btn-sm btn-danger" type="submit">Delete</button>
+                                                </form>
+                                            </td>                                            
                                         </tr>
                                     {% endfor %}
                                 {% else %}

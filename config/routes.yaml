@@ -18,3 +18,8 @@ scraper_store:
   path: /scraper/store
   controller: App\Controller\ScraperController::store
   methods: POST
+
+scraper_destroy:
+  path: /scraper/destroy/{id}
+  controller: App\Controller\ScraperController::destroy
+  methods: [POST]

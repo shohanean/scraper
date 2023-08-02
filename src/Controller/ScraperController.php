@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Repository\CompanyRepository;
 use App\Form\CompanyFormType;
 use App\Entity\Company;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry as PersistenceManagerRegistry;
 
 class ScraperController extends AbstractController
@@ -52,8 +53,16 @@ class ScraperController extends AbstractController
             // Redirect to a success page or show a success message
             $this->addFlash('success', 'Action completed successfully.');
             return $this->redirectToRoute('scraper_index');
-        } else {            
+        } else {
             return new Response('There are some error');
         }
+    }
+
+    public function destroy(EntityManagerInterface $entityManager, CompanyRepository $companyRepository, $id): Response
+    {
+        $entityManager->remove($companyRepository->find($id));
+        $entityManager->flush();
+        $this->addFlash('success', 'Entry deleted successfully.');
+        return $this->redirectToRoute('scraper_index');
     }
 }

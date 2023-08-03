@@ -17,9 +17,8 @@ class ScraperController extends AbstractController
     public function index(CompanyRepository $companyRepository): Response
     {
         $form = $this->createForm(CompanyFormType::class);
-
         return $this->render('scraper/index.html.twig', [
-            'companies' => $companyRepository->findAll(),
+            'companies' => $companyRepository->findAllSortedByDescendingId(),
             'form' => $form->createView()
         ]);
     }
